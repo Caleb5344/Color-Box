@@ -1,0 +1,67 @@
+<html>
+  <head>
+    <title>Color Generator</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="container mt-5">
+      <div class="row">
+        <div class="col">
+          <input
+            type="text"
+            id="inputColors"
+            class="form-control mb-3"
+            placeholder="Enter color(s)"
+          />
+          <button onclick="generateColors()" class="btn btn-primary">
+            Generate Colors
+          </button>
+        </div>
+      </div>
+      <div class="row mt-3">
+        <div class="col">
+          <div id="outputColors" class="color-box mt-3"></div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      function generateColors() {
+        const inputColors = document.getElementById("inputColors").value;
+        const colors = inputColors.split(" ");
+        const outputColors = document.getElementById("outputColors");
+        outputColors.innerHTML = "";
+
+        colors.forEach((color) => {
+          const colorBox = document.createElement("div");
+          colorBox.style.backgroundColor = color;
+          colorBox.classList.add("generated-color");
+          outputColors.appendChild(colorBox);
+        });
+      }
+    </script>
+
+    <style>
+      .color-box {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100px;
+        height: 100px;
+        margin: 0 auto;
+      }
+
+      .generated-color {
+        width: 50px;
+        height: 50px;
+        margin: 5px;
+        border: 1px solid black;
+      }
+    </style>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js"></script>
+  </body>
+</html>
